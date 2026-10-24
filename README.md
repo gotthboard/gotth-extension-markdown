@@ -2,8 +2,8 @@
 
 One planned GOTTH extension for **Markdown/GFM, Mermaid diagrams, and math**.
 
-**Status: design-stage, documentation only.** No renderer executable, container
-image, API implementation, release, or product integration is available yet.
+**Status: design-stage, documentation only.** No renderer executable, Go module,
+container image, API implementation, release, or product integration exists.
 
 The goal is a reusable rendering extension for GOTTH-BB and other GOTTH
 products. Markdown, diagrams, and equations belong to one extension identity
@@ -21,6 +21,24 @@ The visual editor and drag-and-drop page builder remain separate consumers.
 Hosts retain source content, permissions, persistence, and final output-policy
 enforcement. Installing an engine must not silently reinterpret existing posts
 or enable additional syntax.
+
+## Published foundation target
+
+Any future implementation of the host/control boundary must pin the published
+[`gotth-extensions v1.0.0`](https://git.dannyhunn.com/gotthboard/gotth-extensions/releases/tag/v1.0.0)
+and [`gotth-sdk v1.0.0`](https://git.dannyhunn.com/gotthboard/gotth-sdk/releases/tag/v1.0.0)
+modules. Foundation manifest, grant, session, negotiation, and lifecycle types
+come from `github.com/gotthboard/gotth-extensions/pkg/extensions`. Generated
+control messages and service stubs come from
+`github.com/gotthboard/gotth-sdk/gen/go/gotth/extensions/v1`; this repository
+must not copy the control protobuf or generated code.
+
+That published control surface supplies handshake and health, not a Markdown
+rendering API. The rendering business interface remains future specification
+work and must remain extension-provided and host-called, with policy and final
+admission retained by the host. These version pins are a design constraint,
+not an implementation claim: this repository intentionally has no module or
+framework added merely to appear adopted.
 
 ## Documents
 

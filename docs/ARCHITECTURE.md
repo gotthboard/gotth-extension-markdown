@@ -1,6 +1,30 @@
 # Architecture outline
 
-Status: proposed design; not a complete wire specification or runtime proof.
+Status: proposed design; no implementation or release exists. This is not a
+complete wire specification or runtime proof.
+
+## Published V1 host/control boundary
+
+Future implementation must bind its generic extension boundary to the exact
+published `gotth-extensions v1.0.0` and `gotth-sdk v1.0.0` module versions. It
+must import foundation manifest, grant, session, negotiation, and lifecycle
+contracts from `github.com/gotthboard/gotth-extensions/pkg/extensions` and the
+generated control messages and service stubs from
+`github.com/gotthboard/gotth-sdk/gen/go/gotth/extensions/v1`.
+
+The control protobuf and generated Go files remain owned by those published
+foundation/SDK releases. This repository must not vendor, copy, or regenerate a
+second control schema or generated tree. It currently contains no Go module,
+generated package, implementation, or framework; the version binding is a
+design decision rather than evidence of adoption or release readiness.
+
+The published `gotth.extensions.v1.ExtensionControl` surface is limited to
+handshake and health. It does not provide rendering, installation, configuration,
+secret, process-control, or generic invocation operations. A future render
+interface therefore requires its own reviewed wire specification. It remains
+extension-provided and host-called and cannot turn a grant into a callback or
+move authentication, authorization, persistence, publication, or output-policy
+authority out of the host.
 
 ## One extension, several internal renderers
 
@@ -52,7 +76,9 @@ and renderer identity; no cross-tenant private-content cache is implied.
 The planned GOTTH V2 deployment model is one container per extension. This
 repository does not implement the host's Compose/lifecycle control path or
 grant Docker socket access. Health, admission, routing, unload and cancellation
-must use the supported extension contract established during implementation.
+must use the published V1 control boundary where it applies and an explicitly
+specified host-owned lifecycle path where it does not. The generic control
+protocol must not be stretched into a renderer or process supervisor.
 
 Start with a BB-compatible profile that leaves Mermaid and math disabled.
 Compare source-to-HTML and search projections with BB's existing fixtures.
@@ -67,7 +93,9 @@ host validation add costs beyond BB's in-process Markdown renderer. Measure
 representative cold/warm requests, concurrency and failure paths before product
 integration. No current performance or footprint claim is made.
 
-The implementation specification must settle transport/host compatibility,
-engine versions/licenses, resource limits, asset ownership, deterministic IDs,
-accessibility, syntax delimiters, output profiles and migration behavior. These
-are engineering work items, not requests for blanket new user approval.
+The implementation specification must settle the separate render protocol,
+transport/host compatibility, engine versions/licenses, resource limits, asset
+ownership, deterministic IDs, accessibility, syntax delimiters, output profiles
+and migration behavior. These are engineering work items, not requests for
+blanket new user approval. Adding a module or framework before those decisions
+are admitted would only manufacture the appearance of progress.

@@ -1,6 +1,7 @@
 # Product requirements
 
-Status: initial product scope; implementation and release acceptance pending.
+Status: initial product scope only; no implementation, module, integration, or
+release exists, and implementation and release acceptance remain pending.
 
 ## Objective
 
@@ -37,6 +38,19 @@ Mermaid, and math without requiring each product to maintain separate engines.
 - **MD-009 — Presentation:** published output requires no author script or
   third-party CDN. Bundle required styles/fonts and define accessible equation
   and diagram representations during specification.
+- **MD-010 — Published control foundation:** any future host/control adoption
+  must select the exact published `gotth-extensions v1.0.0` and
+  `gotth-sdk v1.0.0` modules. Manifest, grant, session, negotiation, and
+  lifecycle behavior comes from
+  `github.com/gotthboard/gotth-extensions/pkg/extensions`; generated
+  control messages and services come from
+  `github.com/gotthboard/gotth-sdk/gen/go/gotth/extensions/v1`.
+- **MD-011 — Source ownership:** import the generated V1 control package from
+  the SDK. Do not copy or regenerate the control protobuf or generated bindings
+  in this repository. The generic control service remains handshake and health
+  only; the Markdown rendering interface is separately specified, extension-provided,
+  host-called business interface and cannot acquire host authority by being
+  adjacent to the control service.
 
 ## Non-goals
 
@@ -50,4 +64,7 @@ syntax highlighting are not implicitly included by this scope.
 Implementation requires a concrete interface and migration specification, then
 behavioral compatibility, security/boundary, rendering, accessibility, lifecycle,
 failure and performance evidence. The roadmap tracks these as future work;
-none is claimed complete by creating this repository.
+none is claimed complete by creating this repository or recording exact future
+dependency pins. A module, generated tree, framework skeleton, or release-shaped
+scaffolding is not acceptance evidence and must not be added solely to make the
+design appear adopted.
