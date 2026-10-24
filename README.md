@@ -1,66 +1,92 @@
 # gotth-extension-markdown
 
-One planned GOTTH extension for **Markdown/GFM, Mermaid diagrams, and math**.
+Bounded server-side Markdown/GFM rendering for GOTTH hosts.
 
-**Status: design-stage, documentation only.** No renderer executable, Go module,
-container image, API implementation, release, or product integration exists.
+**Status:** v1.0.0 source candidate. It is implemented but not committed by this
+work item, tagged, published, deployed, or integrated into a host.
 
-The goal is a reusable rendering extension for GOTTH-BB and other GOTTH
-products. Markdown, diagrams, and equations belong to one extension identity
-and deployable container, with versioned profiles controlling enabled features.
-The visual editor and drag-and-drop page builder remain separate consumers.
+## V1 behavior
 
-## Planned capabilities
+- one extension identity: `gotth.render.markdown`;
+- one explicit profile: `gotth.markdown.bb-gfm.v1`;
+- BB-compatible Goldmark v1.8.5 GFM plus Bluemonday v1.0.27 p2 policy;
+- complete sanitized HTML and normalized visible text;
+- deterministic renderer/configuration identity;
+- authenticated deadline-bearing gRPC on a private Unix socket;
+- fixed input/output/concurrency/time/memory/message limits;
+- no outbound network, subprocess, browser, CDN, runtime asset, or database;
+- exact published `gotth-extensions v1.0.0` and `gotth-sdk v1.0.0`
+  control boundary, imported rather than copied.
 
-- CommonMark/GFM rendering compatible with GOTTH-BB's current renderer.
-- Optional server-rendered Mermaid diagrams.
-- Optional inline and display mathematics.
-- Validated output, visible text, explicit failures, and renderer/profile identity.
-- Locally supplied rendering assets; no required third-party CDN.
+Mermaid and math are not V1 features. Mermaid fences remain code blocks and math
+syntax remains ordinary text.
 
-Hosts retain source content, permissions, persistence, and final output-policy
-enforcement. Installing an engine must not silently reinterpret existing posts
-or enable additional syntax.
+## Build and verify
 
-## Published foundation target
+Dependencies are pinned by `go.mod`/`go.sum`. After the module cache has been
+seeded and verified, release builds run with `GOPROXY=off` and `GOSUMDB=off`; no
+dependency source or generated control copy is stored in this repository.
 
-Any future implementation of the host/control boundary must pin the published
-[`gotth-extensions v1.0.0`](https://git.dannyhunn.com/gotthboard/gotth-extensions/releases/tag/v1.0.0)
-and [`gotth-sdk v1.0.0`](https://git.dannyhunn.com/gotthboard/gotth-sdk/releases/tag/v1.0.0)
-modules. Foundation manifest, grant, session, negotiation, and lifecycle types
-come from `github.com/gotthboard/gotth-extensions/pkg/extensions`. Generated
-control messages and service stubs come from
-`github.com/gotthboard/gotth-sdk/gen/go/gotth/extensions/v1`; this repository
-must not copy the control protobuf or generated code.
+```sh
+scripts/sanitized-run scripts/source-manifest.sh /external/evidence/source-manifest.sha256
+make verify SOURCE_MANIFEST=/external/evidence/source-manifest.sha256
+# race/repeat/fuzz/performance remain designated-development-host gates
+```
 
-That published control surface supplies handshake and health, not a Markdown
-rendering API. The rendering business interface remains future specification
-work and must remain extension-provided and host-called, with policy and final
-admission retained by the host. These version pins are a design constraint,
-not an implementation claim: this repository intentionally has no module or
-framework added merely to appear adopted.
+Every accepted local gate checks that exact fileset/content manifest before and
+after execution. The artifact path also verifies the complete checked-in
+release-toolchain fileset/content manifest, including all GOROOT files, the race
+CGO/GCC assembler/linker/startup/header/library chain, and every used construction
+or validation executable. Accepted commands start through the checked-in static
+`sanitized-run` launcher, which creates a fresh private Go cache and clears loader,
+Git, compiler, Go, and archive state before any dynamic tool starts.
+
+Release artifacts use `scripts/sanitized-run scripts/build-artifact.sh 1.0.0 <empty-output-dir>`.
+The script never overwrites an existing archive. See
+[distribution](docs/DISTRIBUTION.md) and [implementation](docs/IMPLEMENTATION.md).
+
+## Runtime
+
+The host supplies strict private configuration, canonical foundation grant, and
+token files plus an absent socket path through environment variables documented
+in the implementation specification. A typical configuration is:
+
+```json
+{"schema":"gotth.extension.markdown.config.v1","profile":"gotth.markdown.bb-gfm.v1","timeout_milliseconds":500,"max_concurrent":4}
+```
+
+Deploy the scratch image as UID/GID 65532. It contains the executable plus the
+project and third-party legal payload and SPDX SBOM; use a private runtime-
+directory mount,
+no network, read-only root, and hard memory/CPU/process limits. The host retains
+source and accepted output and independently enforces final HTML/URL policy.
 
 ## Documents
 
 - [Product requirements](docs/PRD.md)
-- [Architecture outline](docs/ARCHITECTURE.md)
-- [Development roadmap](docs/ROADMAP.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [V1 implementation specification](docs/IMPLEMENTATION.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Distribution and release](docs/DISTRIBUTION.md)
+- [Verification](docs/VERIFICATION.md)
 - [Changelog](docs/CHANGELOG.md)
-- [Security reporting](SECURITY.md)
+- [Security policy](SECURITY.md)
+- [SPDX SBOM](SBOM.spdx.json)
+- [Third-party notices](THIRD_PARTY_NOTICES.md)
 
 ## Source and reports
 
 [Forgejo](https://git.dannyhunn.com/gotthboard/gotth-extension-markdown) is the
-private canonical source. This [GitHub repository](https://github.com/gotthboard/gotth-extension-markdown)
-is its public one-way mirror.
-
-Use [GitHub Issues](https://github.com/gotthboard/gotth-extension-markdown/issues)
-for non-security bugs and feature requests. Report vulnerabilities through
-[private vulnerability reporting](https://github.com/gotthboard/gotth-extension-markdown/security/advisories/new),
-not public issues or Forgejo tickets.
+private canonical source. The
+[GitHub repository](https://github.com/gotthboard/gotth-extension-markdown) is a
+public one-way mirror maintained separately; mirror parity is not a Forgejo
+release gate. Use [GitHub Issues](https://github.com/gotthboard/gotth-extension-markdown/issues)
+for non-security bugs. Report vulnerabilities through
+[GitHub private vulnerability reporting](https://github.com/gotthboard/gotth-extension-markdown/security/advisories/new),
+never a public issue or Forgejo ticket.
 
 ## License
 
-[MIT](LICENSE). Future incorporated dependencies must retain their respective
-licenses and notices; this initial repository contains no extracted BB code or
-bundled rendering engine.
+[MIT](LICENSE). Third-party terms are retained as exact license texts under
+`third_party/licenses/` (including the required gRPC `NOTICE.txt`) and listed in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); dependency source is not vendored.

@@ -1,36 +1,33 @@
 # Development roadmap
 
-All executable work below is pending. These are workstreams, not release tags;
-there is no implementation, module, integration candidate, or release.
+## V1.0.0 Markdown profile — implemented source candidate
 
-1. Specify the render business interface, versioned profiles, failure semantics
-   and BB compatibility/migration boundary on top of the exact published
-   `gotth-extensions v1.0.0` and `gotth-sdk v1.0.0` host/control boundary.
-   Confirm that the generic control service remains handshake and health only.
-2. Extract a narrowly reusable BB Markdown core and prove an end-to-end
-   BB-compatible render slice through the extension adapter. When executable
-   work is admitted, import foundation contracts from
-   `github.com/gotthboard/gotth-extensions/pkg/extensions` and generated control
-   code from `github.com/gotthboard/gotth-sdk/gen/go/gotth/extensions/v1`; do not
-   copy or regenerate the control schema or generated bindings here.
-3. Add optional Mermaid rendering inside the same extension and qualify its
-   isolation, assets, limits and output acceptance.
-4. Add optional inline/display math inside the same extension and qualify its
-   delimiters, fonts, accessibility and output acceptance.
-5. Package one container with pinned dependencies and required license notices;
-   prove lifecycle, cancellation, offline rendering and availability behavior.
-6. Integrate explicit host profiles without silently changing existing content;
-   complete compatibility, security, accessibility and performance review.
+- [x] Exact published Extensions/SDK v1.0.0 control boundary, with no local copy.
+- [x] Separate renderer v1 wire contract and manifest capability.
+- [x] Deterministic bounded BB-compatible GFM render and visible-text projection.
+- [x] Sanitization, no-egress source boundary, local authentication, deadlines,
+  cancellation, concurrency, memory/message limits, and graceful lifecycle.
+- [x] Pinned checksum-verified dependencies, notices, SPDX SBOM, cache-seeded/reproducible
+  artifact path, scratch container recipe, and release documentation.
+- [x] Revision-matched full development-host, isolated-fuzz, performance,
+  compiled-process, dependency-fetch-disabled build, and artifact evidence.
+- [x] Earlier cold reviews, including blocking closure review E and non-overriding
+  clean review F, are recorded; every E finding is remediated in this candidate.
+- [x] Fresh candidate-bound network-isolation and advisory govulncheck evidence.
+- [ ] Two fresh independent post-remediation admission reviews and a clean-commit
+  stable artifact. The current source/evidence seal is review input, not admission.
+- [ ] Authorized commit, tag, hosted release, image publication, deployment, and
+  host integration. These are separate actions and are not implied by source
+  completion.
 
-Each slice needs product-facing acceptance checks and bounded supporting work.
-Do not build a general testing framework or qualify unrelated infrastructure.
-Reuse established tools and completed evidence where applicable.
+## Later profiles — not V1
 
-Do not add a Go module, generated-code tree, adapter framework, or release
-scaffolding merely to mark V1 adoption. The published version pins are design
-inputs until an approved implementation slice imports and verifies them in real
-host/control behavior.
+1. Mermaid: settle engine/browser isolation, deterministic IDs/layout, SVG and
+   URL policy, textual alternatives, local assets, licenses, and performance.
+2. Math: settle delimiters, KaTeX/other engine selection, MathML/HTML policy,
+   accessible speech/text, fonts, local assets, licenses, and performance.
+3. Host adoption: implement and separately admit explicit profile selection and
+   BB fixture/migration behavior without changing existing rows implicitly.
 
-This repository creation does not migrate BB, schedule another agent, implement
-the visual editor, authorize a release or deploy a container. This documentation
-update likewise does not implement, integrate, tag, publish, or release anything.
+No later item should create a renderer framework. Add one profile only when its
+product contract and acceptance fixtures are approved.

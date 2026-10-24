@@ -1,0 +1,323 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "gotth-extension-markdown-1.0.0",
+  "documentNamespace": "https://git.dannyhunn.com/gotthboard/gotth-extension-markdown/releases/tag/v1.0.0/sbom",
+  "creationInfo": {
+    "created": "2026-10-24T05:01:55Z",
+    "creators": [
+      "Tool: gotth-extension-markdown-release-process-v1"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-Package-root"
+  ],
+  "packages": [
+    {
+      "name": "gotth-extension-markdown",
+      "SPDXID": "SPDXRef-Package-root",
+      "versionInfo": "1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/gotthboard/gotth-extension-markdown@v1.0.0"
+        }
+      ]
+    },
+    {
+      "name": "Go standard library",
+      "SPDXID": "SPDXRef-Package-go-standard-library",
+      "versionInfo": "go1.27.3-X:nodwarf5",
+      "downloadLocation": "https://go.dev/dl/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "Copyright 2009 The Go Authors",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:generic/go-stdlib@1.27.3-X:nodwarf5"
+        }
+      ]
+    },
+    {
+      "name": "github.com/aymerick/douceur",
+      "SPDXID": "SPDXRef-Package-github.com-aymerick-douceur",
+      "versionInfo": "v0.2.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/aymerick/douceur@v0.2.0"
+        }
+      ]
+    },
+    {
+      "name": "github.com/gorilla/css",
+      "SPDXID": "SPDXRef-Package-github.com-gorilla-css",
+      "versionInfo": "v1.0.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/gorilla/css@v1.0.1"
+        }
+      ]
+    },
+    {
+      "name": "github.com/gotthboard/gotth-extensions",
+      "SPDXID": "SPDXRef-Package-github.com-gotthboard-gotth-extensions",
+      "versionInfo": "v1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/gotthboard/gotth-extensions@v1.0.0"
+        }
+      ]
+    },
+    {
+      "name": "github.com/gotthboard/gotth-sdk",
+      "SPDXID": "SPDXRef-Package-github.com-gotthboard-gotth-sdk",
+      "versionInfo": "v1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/gotthboard/gotth-sdk@v1.0.0"
+        }
+      ]
+    },
+    {
+      "name": "github.com/microcosm-cc/bluemonday",
+      "SPDXID": "SPDXRef-Package-github.com-microcosm-cc-bluemonday",
+      "versionInfo": "v1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/microcosm-cc/bluemonday@v1.0.27"
+        }
+      ]
+    },
+    {
+      "name": "github.com/yuin/goldmark",
+      "SPDXID": "SPDXRef-Package-github.com-yuin-goldmark",
+      "versionInfo": "v1.8.5",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/yuin/goldmark@v1.8.5"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/net",
+      "SPDXID": "SPDXRef-Package-golang.org-x-net",
+      "versionInfo": "v0.60.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/net@v0.60.0"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/sys",
+      "SPDXID": "SPDXRef-Package-golang.org-x-sys",
+      "versionInfo": "v0.48.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/sys@v0.48.0"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/text",
+      "SPDXID": "SPDXRef-Package-golang.org-x-text",
+      "versionInfo": "v0.42.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/text@v0.42.0"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/genproto/googleapis/rpc",
+      "SPDXID": "SPDXRef-Package-google.golang.org-genproto-googleapis-rpc",
+      "versionInfo": "v0.0.0-20260526163538-3dc84a4a5aaa",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/genproto/googleapis/rpc@v0.0.0-20260526163538-3dc84a4a5aaa"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/grpc",
+      "SPDXID": "SPDXRef-Package-google.golang.org-grpc",
+      "versionInfo": "v1.83.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/grpc@v1.83.2"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/protobuf",
+      "SPDXID": "SPDXRef-Package-google.golang.org-protobuf",
+      "versionInfo": "v1.36.11",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/protobuf@v1.36.11"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-go-standard-library"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-aymerick-douceur"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-gorilla-css"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-gotthboard-gotth-extensions"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-gotthboard-gotth-sdk"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-microcosm-cc-bluemonday"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-github.com-yuin-goldmark"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-golang.org-x-net"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-golang.org-x-sys"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-golang.org-x-text"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-google.golang.org-genproto-googleapis-rpc"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-google.golang.org-grpc"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-root",
+      "relationshipType": "STATIC_LINK",
+      "relatedSpdxElement": "SPDXRef-Package-google.golang.org-protobuf"
+    }
+  ]
+}

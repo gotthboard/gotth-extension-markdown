@@ -1,0 +1,18 @@
+schema_version = 1
+profile = "strict"
+active_feature = "v1-release"
+coverage_map = "workflow/COVERAGE.md"
+
+[[root_features]]
+id = "v1-release"
+title = "Bounded Markdown renderer v1.0.0 source candidate"
+state = "active"
+prd = "docs/PRD.md"
+architecture = "docs/ARCHITECTURE.md"
+implementation_spec = "docs/IMPLEMENTATION.md"
+path = "workflow/features/v1-release"
+source_path = "."
+branch = "workflow/feature/v1-release"
+worktree = "/home/linus/.openclaw/workspace/.artifacts/worktrees/gotth-extension-markdown-v1-adoption"
+dependencies = ["design@d7b09bfd6d6e31cc9adff367382cd68b6989f38a", "gotth-extensions@v1.0.0", "gotth-sdk@v1.0.0", "goldmark@v1.8.5", "bluemonday@v1.0.27"]
+required_verification = ["git diff --check", "gofmt clean", "go test ./...", "compiled authenticated Unix process", "exact foundation/SDK control binding and no local copy", "hostile input/output and no-egress policy", "go test -race ./... on development", "repeat and shuffled race suites on development", "bounded fuzz on development", "go vet and static build", "declared release-toolchain fileset/content manifest with hostile drift rejection", "network-disabled cache-seeded build", "linked dependency/license/SBOM parity", "reproducible v1.0.0 archive", "representative performance on development", "two fresh independent cold reviews", "exact source/evidence seal"]

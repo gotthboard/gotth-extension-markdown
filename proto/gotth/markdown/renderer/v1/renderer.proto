@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package gotth.markdown.renderer.v1;
+
+option go_package = "github.com/gotthboard/gotth-extension-markdown/proto/gotth/markdown/renderer/v1;rendererv1";
+
+// MarkdownRenderer is the extension-owned, host-called rendering interface.
+// It is intentionally separate from gotth.extensions.v1.ExtensionControl.
+service MarkdownRenderer {
+  rpc Render(RenderRequest) returns (RenderResponse);
+}
+
+message RenderRequest {
+  string correlation_id = 1;
+  string profile = 2;
+  string source = 3;
+}
+
+message RenderResponse {
+  string schema = 1;
+  bool complete = 2;
+  string html = 3;
+  string visible_text = 4;
+  string renderer_identity_sha256 = 5;
+  string engine = 6;
+  string profile = 7;
+  string sanitizer = 8;
+  string configuration_sha256 = 9;
+  string extension_version = 10;
+}
